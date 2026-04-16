@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b8x21ohwyh4vh"]
+
+[ext_resource type="PackedScene" uid="uid://bosg0um75was" path="res://scenes/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="PackedScene" uid="uid://bl57t31she8tv" path="res://scenes/ground/ground.tscn" id="2_iuonh"]
+[ext_resource type="Texture2D" uid="uid://b2ufdrtvd4hrw" path="res://graphics/background/background.png" id="3_k2fmo"]
+
+[node name="Main" type="Node2D" unique_id=1016884313]
+
+[node name="background" type="Node2D" parent="." unique_id=1362348695]
+
+[node name="Parallax2D" type="Parallax2D" parent="background" unique_id=1654163246]
+repeat_size = Vector2(32, 32)
+autoscroll = Vector2(-200, 0)
+repeat_times = 40
+
+[node name="Sprite2D" type="Sprite2D" parent="background/Parallax2D" unique_id=422380796]
+position = Vector2(554, 308)
+texture = ExtResource("3_k2fmo")
+
+[node name="Player" parent="." unique_id=742057667 instance=ExtResource("1_hyk8p")]
+position = Vector2(66, 376)
+
+[node name="Ground" parent="." unique_id=1460966692 instance=ExtResource("2_iuonh")]
+position = Vector2(554, 644)
+scale = Vector2(49.72, 1)
+
+[node name="Ground2" parent="." unique_id=403999238 instance=ExtResource("2_iuonh")]
+position = Vector2(554, -18)
+scale = Vector2(49.72, 1)
