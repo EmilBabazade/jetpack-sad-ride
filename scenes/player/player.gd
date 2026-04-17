@@ -1,7 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
-var gravity := 10.0
+var gravity := 20.0
+var max_jump := 500.0
+var init_jump := 300.0
 var jump := 300.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var bullet_particles: GPUParticles2D = $BulletParticles
@@ -11,6 +13,10 @@ func _physics_process(delta: float) -> void:
 	var is_jumping := Input.is_action_pressed("jump")
 	if is_jumping:
 		velocity.y = -jump
+		jump = move_toward(jump, max_jump, delta * 300)
+	else:
+		jump = init_jump
+	print(jump)
 	bullet_particles.emitting = is_jumping
 	
 	# gravity

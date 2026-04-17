@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bosg0um75was"]
 
-[ext_resource type="Texture2D" uid="uid://c20y5sifiat6h" path="res://graphics/player/player-Sheet.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://d2suiv7jiotju" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="Texture2D" uid="uid://brtom3jmlti4x" path="res://graphics/player/player2-Sheet.png" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bbiw7b40haqk4" path="res://graphics/particles/bullet.png" id="3_gmlin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
-size = Vector2(8, 76)
+size = Vector2(48, 79)
 
 [sub_resource type="Animation" id="Animation_8afob"]
 length = 0.001
@@ -48,13 +48,16 @@ _data = {
 particle_flag_disable_z = true
 angle_min = 1.0728835e-05
 angle_max = 1.0728835e-05
-spread = 180.0
+direction = Vector3(0, 1, 0)
+spread = 5.0
 initial_velocity_max = 21.51
-gravity = Vector3(0, 98, 0)
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 93.549995
+linear_accel_max = 99.99999
 radial_accel_min = -2.2351742e-06
 radial_accel_max = 27.959997
-hue_variation_min = 0.30999997
-hue_variation_max = 0.54999995
+scale_min = 2.0
+scale_max = 2.0
 anim_speed_max = 5.5099998
 
 [node name="Player" type="CharacterBody2D" unique_id=742057667]
@@ -64,20 +67,22 @@ script = ExtResource("1_dovo2")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1570348243]
 position = Vector2(0, -4)
 scale = Vector2(4, 4)
-texture = ExtResource("1_8afob")
+texture = ExtResource("2_gmlin")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=771842584]
-position = Vector2(0, 2)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_8afob")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=155000871]
 libraries/ = SubResource("AnimationLibrary_gmlin")
 
 [node name="BulletParticles" type="GPUParticles2D" parent="." unique_id=1418452101]
-position = Vector2(-8, 11)
-amount = 50
+position = Vector2(-33, 15)
+amount = 100
 texture = ExtResource("3_gmlin")
 lifetime = 5.0
 speed_scale = 5.0
+visibility_rect = Rect2(-100, -100, 200, 650)
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_dovo2")

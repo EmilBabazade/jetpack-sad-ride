@@ -9,9 +9,9 @@
 [node name="background" type="Node2D" parent="." unique_id=1362348695]
 
 [node name="Parallax2D" type="Parallax2D" parent="background" unique_id=1654163246]
-repeat_size = Vector2(32, 32)
+repeat_size = Vector2(32, 16)
 autoscroll = Vector2(-200, 0)
-repeat_times = 40
+repeat_times = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="background/Parallax2D" unique_id=422380796]
 position = Vector2(554, 308)
