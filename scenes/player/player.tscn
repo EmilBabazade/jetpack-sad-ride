@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2suiv7jiotju" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://brtom3jmlti4x" path="res://graphics/player/player2-Sheet.png" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bbiw7b40haqk4" path="res://graphics/particles/bullet.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://de86w1x7xqejr" path="res://icon.svg" id="4_lvxji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
 size = Vector2(48, 79)
@@ -58,7 +59,22 @@ radial_accel_min = -2.2351742e-06
 radial_accel_max = 27.959997
 scale_min = 2.0
 scale_max = 2.0
-anim_speed_max = 5.5099998
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 10
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gmlin"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_max = 430.11
+angular_velocity_min = 15.479983
+angular_velocity_max = 719.99994
+gravity = Vector3(0, 0, 0)
+hue_variation_min = 0.74999994
+hue_variation_max = 0.99999994
 
 [node name="Player" type="CharacterBody2D" unique_id=742057667]
 collision_mask = 2
@@ -79,10 +95,20 @@ libraries/ = SubResource("AnimationLibrary_gmlin")
 
 [node name="BulletParticles" type="GPUParticles2D" parent="." unique_id=1418452101]
 position = Vector2(-33, 15)
+emitting = false
 amount = 30
+sub_emitter = NodePath("../SparkParticles")
 texture = ExtResource("3_gmlin")
 lifetime = 5.0
 speed_scale = 10.0
 visibility_rect = Rect2(-100, -100, 200, 650)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_dovo2")
+
+[node name="SparkParticles" type="GPUParticles2D" parent="." unique_id=1251810677]
+position = Vector2(355, 4)
+emitting = false
+amount = 50
+texture = ExtResource("4_lvxji")
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_gmlin")
