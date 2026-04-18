@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bosg0um75was" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://bl57t31she8tv" path="res://scenes/ground/ground.tscn" id="2_iuonh"]
 [ext_resource type="Texture2D" uid="uid://b2ufdrtvd4hrw" path="res://graphics/background/background.png" id="3_k2fmo"]
+[ext_resource type="Script" uid="uid://xptu4jhrkm6w" path="res://scenes/main/camera_2d.gd" id="4_l3cfh"]
 
 [node name="Main" type="Node2D" unique_id=1016884313]
 
@@ -18,7 +19,7 @@ position = Vector2(554, 308)
 texture = ExtResource("3_k2fmo")
 
 [node name="Player" parent="." unique_id=742057667 instance=ExtResource("1_hyk8p")]
-position = Vector2(66, 376)
+position = Vector2(225, 380)
 
 [node name="Ground" parent="." unique_id=1460966692 instance=ExtResource("2_iuonh")]
 position = Vector2(554, 644)
@@ -27,3 +28,7 @@ scale = Vector2(49.72, 1)
 [node name="Ground2" parent="." unique_id=403999238 instance=ExtResource("2_iuonh")]
 position = Vector2(554, -18)
 scale = Vector2(49.72, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1320151900]
+position = Vector2(576, 326)
+script = ExtResource("4_l3cfh")

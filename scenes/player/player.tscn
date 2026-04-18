@@ -79,10 +79,10 @@ libraries/ = SubResource("AnimationLibrary_gmlin")
 
 [node name="BulletParticles" type="GPUParticles2D" parent="." unique_id=1418452101]
 position = Vector2(-33, 15)
-amount = 100
+amount = 30
 texture = ExtResource("3_gmlin")
 lifetime = 5.0
-speed_scale = 5.0
+speed_scale = 10.0
 visibility_rect = Rect2(-100, -100, 200, 650)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_dovo2")
