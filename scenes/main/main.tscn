@@ -4,23 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bl57t31she8tv" path="res://scenes/ground/ground.tscn" id="2_iuonh"]
 [ext_resource type="Texture2D" uid="uid://b2ufdrtvd4hrw" path="res://graphics/background/background.png" id="3_k2fmo"]
 [ext_resource type="Script" uid="uid://xptu4jhrkm6w" path="res://scenes/main/camera_2d.gd" id="4_l3cfh"]
-[ext_resource type="Texture2D" uid="uid://de86w1x7xqejr" path="res://icon.svg" id="5_6q06x"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l3cfh"]
-polygon = PackedVector2Array(-59, 11, 83, 8, 82, -17, -60, -18)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ow5a4"]
-particle_flag_disable_z = true
-angle_min = -720.0
-angle_max = 720.0
-inherit_velocity_ratio = 1.0
-spread = 180.0
-initial_velocity_max = 430.11
-angular_velocity_min = 15.479983
-angular_velocity_max = 719.99994
-gravity = Vector3(0, 0, 0)
-hue_variation_min = 0.74999994
-hue_variation_max = 0.99999994
+polygon = PackedVector2Array(-146, 6, 177, 7, 173, -27, -146, -25)
 
 [node name="Main" type="Node2D" unique_id=1016884313]
 
@@ -35,9 +21,8 @@ repeat_times = 50
 position = Vector2(554, 308)
 texture = ExtResource("3_k2fmo")
 
-[node name="Player" parent="." unique_id=742057667 node_paths=PackedStringArray("spark_particles") instance=ExtResource("1_hyk8p")]
+[node name="Player" parent="." unique_id=742057667 instance=ExtResource("1_hyk8p")]
 position = Vector2(225, 380)
-spark_particles = NodePath("../SparkParticles")
 
 [node name="Ground" parent="." unique_id=1460966692 instance=ExtResource("2_iuonh")]
 position = Vector2(554, 644)
@@ -52,13 +37,5 @@ position = Vector2(576, 326)
 script = ExtResource("4_l3cfh")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=106572156]
-position = Vector2(192, 455)
+position = Vector2(226, 649)
 occluder = SubResource("OccluderPolygon2D_l3cfh")
-
-[node name="SparkParticles" type="GPUParticles2D" parent="." unique_id=617990305]
-position = Vector2(355, 4)
-emitting = false
-amount = 50
-texture = ExtResource("5_6q06x")
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_ow5a4")

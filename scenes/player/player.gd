@@ -8,11 +8,6 @@ var jump := 300.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var bullet_particles: GPUParticles2D = $BulletParticles
 
-@export var spark_particles: GPUParticles2D
-
-func _ready() -> void:
-	bullet_particles.sub_emitter = spark_particles.get_path()
-
 func _physics_process(delta: float) -> void:
 	# jump
 	var is_jumping := Input.is_action_pressed("jump")
