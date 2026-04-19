@@ -15,6 +15,10 @@ run/main_scene="uid://b8x21ohwyh4vh"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MoverSpeedManager="*uid://b8uwfgpng4o6c"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=2
@@ -44,7 +48,7 @@ jump={
 [layer_names]
 
 2d_physics/layer_1="player"
-2d_physics/layer_2="environment"
+2d_physics/layer_2="obstacles"
 2d_physics/layer_3="ground"
 
 [physics]

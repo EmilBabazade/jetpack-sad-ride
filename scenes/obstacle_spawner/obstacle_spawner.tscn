@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d2biy3u6a14wu"]
+
+[ext_resource type="Script" uid="uid://d2iw6r06voxph" path="res://scenes/obstacle_spawner/obstacle_spawner.gd" id="1_7248h"]
+[ext_resource type="PackedScene" uid="uid://c48x51n8qaym" path="res://scenes/saw/saw.tscn" id="2_xclqg"]
+
+[node name="ObstacleSpawner" type="Node2D" unique_id=1820575336]
+script = ExtResource("1_7248h")
+saw_scene = ExtResource("2_xclqg")
+
+[node name="Timer" type="Timer" parent="." unique_id=768539476]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

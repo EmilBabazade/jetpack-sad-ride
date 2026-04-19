@@ -5,8 +5,26 @@
 [ext_resource type="Texture2D" uid="uid://bbiw7b40haqk4" path="res://graphics/particles/bullet.png" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://c8bhcrmvfc8ew" path="res://graphics/particles/spark.png" id="5_p47bc"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dovo2"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_max = 21.51
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 93.549995
+linear_accel_max = 99.99999
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 27.959997
+scale_min = 2.0
+scale_max = 2.0
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 32
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
-size = Vector2(48, 79)
+size = Vector2(24, 40)
 
 [sub_resource type="Animation" id="Animation_8afob"]
 length = 0.001
@@ -45,24 +63,6 @@ _data = {
 &"run": SubResource("Animation_dovo2")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dovo2"]
-particle_flag_disable_z = true
-angle_min = 1.0728835e-05
-angle_max = 1.0728835e-05
-direction = Vector3(0, 1, 0)
-spread = 5.0
-initial_velocity_max = 21.51
-gravity = Vector3(0, 0, 0)
-linear_accel_min = 93.549995
-linear_accel_max = 99.99999
-radial_accel_min = -2.2351742e-06
-radial_accel_max = 27.959997
-scale_min = 2.0
-scale_max = 2.0
-collision_mode = 2
-sub_emitter_mode = 3
-sub_emitter_amount_at_collision = 32
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gmlin"]
 lifetime_randomness = 1.0
 particle_flag_disable_z = true
@@ -81,21 +81,8 @@ attractor_interaction_enabled = false
 collision_mask = 6
 script = ExtResource("1_dovo2")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1570348243]
-position = Vector2(0, -4)
-scale = Vector2(4, 4)
-texture = ExtResource("2_gmlin")
-hframes = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=771842584]
-position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_8afob")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=155000871]
-libraries/ = SubResource("AnimationLibrary_gmlin")
-
 [node name="BulletParticles" type="GPUParticles2D" parent="." unique_id=1418452101]
-position = Vector2(-33, 15)
+position = Vector2(-16, -4)
 emitting = false
 amount = 30
 sub_emitter = NodePath("../SparkParticles")
@@ -104,6 +91,18 @@ lifetime = 5.0
 speed_scale = 10.0
 visibility_rect = Rect2(-100, -100, 200, 650)
 process_material = SubResource("ParticleProcessMaterial_dovo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1570348243]
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
+texture = ExtResource("2_gmlin")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=771842584]
+shape = SubResource("RectangleShape2D_8afob")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=155000871]
+libraries/ = SubResource("AnimationLibrary_gmlin")
 
 [node name="SparkParticles" type="GPUParticles2D" parent="." unique_id=1251810677]
 emitting = false

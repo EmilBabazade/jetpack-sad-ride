@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c48x51n8qaym"]
+
+[ext_resource type="Texture2D" uid="uid://bw0uy3t2s5jem" path="res://graphics/onstacles/saw2.png" id="1_sbhpf"]
+[ext_resource type="Script" uid="uid://byhdt2n8htj2u" path="res://scenes/saw/saw.gd" id="1_sk0ah"]
+[ext_resource type="Texture2D" uid="uid://bn1d7ocl0y8vs" path="res://graphics/onstacles/saw3.png" id="2_l8ip7"]
+[ext_resource type="Texture2D" uid="uid://esk5kuji7mci" path="res://graphics/onstacles/saw4.png" id="3_sk0ah"]
+[ext_resource type="PackedScene" uid="uid://q3b6spgmhhm7" path="res://scenes/mover/mover.tscn" id="4_l8ip7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4qfuj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sbhpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_l8ip7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sk0ah")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysd34"]
+radius = 28.071337
+
+[node name="Saw" type="Area2D" unique_id=1469906033]
+collision_layer = 2
+script = ExtResource("1_sk0ah")
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="." unique_id=665566574]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4qfuj")
+autoplay = "default"
+frame_progress = 0.0913364
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1599505216]
+shape = SubResource("CircleShape2D_ysd34")
+
+[node name="Mover" parent="." unique_id=1221921096 node_paths=PackedStringArray("to_move") instance=ExtResource("4_l8ip7")]
+to_move = NodePath("..")

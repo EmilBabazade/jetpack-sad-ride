@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://rhkhew8lkdah"]
+
+[ext_resource type="Texture2D" uid="uid://6xj0yektkgbx" path="res://graphics/lasers/laser1.png" id="1_0kheo"]
+
+[node name="Laser" type="Area2D" unique_id=1430270165]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1468710294]
+scale = Vector2(4, 4)
+texture = ExtResource("1_0kheo")

@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bl57t31she8tv" path="res://scenes/ground/ground.tscn" id="2_iuonh"]
 [ext_resource type="Texture2D" uid="uid://b2ufdrtvd4hrw" path="res://graphics/background/background.png" id="3_k2fmo"]
 [ext_resource type="Script" uid="uid://xptu4jhrkm6w" path="res://scenes/main/camera_2d.gd" id="4_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://c48x51n8qaym" path="res://scenes/saw/saw.tscn" id="6_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://d2biy3u6a14wu" path="res://scenes/obstacle_spawner/obstacle_spawner.tscn" id="7_hujxm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l3cfh"]
 polygon = PackedVector2Array(-146, 6, 177, 7, 173, -27, -146, -25)
@@ -54,5 +56,39 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFallDetector" unique_id=1818089728]
 shape = SubResource("RectangleShape2D_l3cfh")
+
+[node name="Saw" parent="." unique_id=1469906033 instance=ExtResource("6_ow5a4")]
+position = Vector2(520, 395)
+
+[node name="ObstacleSpawner" parent="." unique_id=1820575336 node_paths=PackedStringArray("spawn_points") instance=ExtResource("7_hujxm")]
+spawn_points = [NodePath("Spawn"), NodePath("Spawn2"), NodePath("Spawn3"), NodePath("Spawn4"), NodePath("Spawn5"), NodePath("Spawn6"), NodePath("Spawn7"), NodePath("Spawn8"), NodePath("Spawn9")]
+max_spawn_count = 8
+
+[node name="Spawn" type="Marker2D" parent="ObstacleSpawner" unique_id=206331364]
+position = Vector2(1176, 64)
+
+[node name="Spawn2" type="Marker2D" parent="ObstacleSpawner" unique_id=1380380926]
+position = Vector2(1176, 128)
+
+[node name="Spawn3" type="Marker2D" parent="ObstacleSpawner" unique_id=2026438957]
+position = Vector2(1176, 192)
+
+[node name="Spawn4" type="Marker2D" parent="ObstacleSpawner" unique_id=819508027]
+position = Vector2(1176, 256)
+
+[node name="Spawn5" type="Marker2D" parent="ObstacleSpawner" unique_id=784572343]
+position = Vector2(1176, 320)
+
+[node name="Spawn6" type="Marker2D" parent="ObstacleSpawner" unique_id=2004071526]
+position = Vector2(1176, 384)
+
+[node name="Spawn7" type="Marker2D" parent="ObstacleSpawner" unique_id=168679408]
+position = Vector2(1176, 448)
+
+[node name="Spawn8" type="Marker2D" parent="ObstacleSpawner" unique_id=31516568]
+position = Vector2(1176, 512)
+
+[node name="Spawn9" type="Marker2D" parent="ObstacleSpawner" unique_id=646821931]
+position = Vector2(1176, 576)
 
 [connection signal="body_entered" from="PlayerFallDetector" to="Player" method="_on_player_fall_detector_body_entered"]

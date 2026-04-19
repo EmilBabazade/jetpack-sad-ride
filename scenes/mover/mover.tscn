@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://q3b6spgmhhm7"]
+
+[ext_resource type="Script" uid="uid://bs7udd0hpklm3" path="res://scenes/mover/mover.gd" id="1_2tjcc"]
+
+[node name="Mover" type="Node2D" unique_id=1221921096]
+script = ExtResource("1_2tjcc")
