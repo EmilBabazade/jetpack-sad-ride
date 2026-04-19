@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b8x21ohwyh4vh"]
 
+[ext_resource type="Script" uid="uid://batdwso1trfub" path="res://scenes/main/main.gd" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://bosg0um75was" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://bl57t31she8tv" path="res://scenes/ground/ground.tscn" id="2_iuonh"]
 [ext_resource type="Texture2D" uid="uid://b2ufdrtvd4hrw" path="res://graphics/background/background.png" id="3_k2fmo"]
@@ -8,7 +9,11 @@
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l3cfh"]
 polygon = PackedVector2Array(-146, 6, 177, 7, 173, -27, -146, -25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3cfh"]
+size = Vector2(254, 6)
+
 [node name="Main" type="Node2D" unique_id=1016884313]
+script = ExtResource("1_6q06x")
 
 [node name="background" type="Node2D" parent="." unique_id=1362348695]
 
@@ -21,16 +26,19 @@ repeat_times = 50
 position = Vector2(554, 308)
 texture = ExtResource("3_k2fmo")
 
-[node name="Player" parent="." unique_id=742057667 instance=ExtResource("1_hyk8p")]
+[node name="Player" parent="." unique_id=742057667 node_paths=PackedStringArray("camera") instance=ExtResource("1_hyk8p")]
 position = Vector2(225, 380)
+camera = NodePath("../Camera2D")
 
 [node name="Ground" parent="." unique_id=1460966692 instance=ExtResource("2_iuonh")]
-position = Vector2(554, 644)
-scale = Vector2(49.72, 1)
+position = Vector2(554, 707)
+scale = Vector2(49.72, 5.0400014)
+collision_layer = 4
 
 [node name="Ground2" parent="." unique_id=403999238 instance=ExtResource("2_iuonh")]
-position = Vector2(554, -18)
-scale = Vector2(49.72, 1)
+position = Vector2(570, -76)
+scale = Vector2(49.72, 6.64)
+collision_layer = 4
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1320151900]
 position = Vector2(576, 326)
@@ -39,3 +47,12 @@ script = ExtResource("4_l3cfh")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=106572156]
 position = Vector2(226, 649)
 occluder = SubResource("OccluderPolygon2D_l3cfh")
+
+[node name="PlayerFallDetector" type="Area2D" parent="." unique_id=2029747448]
+position = Vector2(225, 628)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFallDetector" unique_id=1818089728]
+shape = SubResource("RectangleShape2D_l3cfh")
+
+[connection signal="body_entered" from="PlayerFallDetector" to="Player" method="_on_player_fall_detector_body_entered"]

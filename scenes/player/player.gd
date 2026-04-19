@@ -7,6 +7,9 @@ var init_jump := 300.0
 var jump := 300.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var bullet_particles: GPUParticles2D = $BulletParticles
+@export var camera: Camera
+@onready var ray_cast: RayCast2D = $GroundDetector
+var last_dist_ground := 0.0
 
 func _physics_process(delta: float) -> void:
 	# jump
@@ -16,8 +19,12 @@ func _physics_process(delta: float) -> void:
 		jump = move_toward(jump, max_jump, delta * 300)
 	else:
 		jump = init_jump
-	print(jump)
 	bullet_particles.emitting = is_jumping
+	
+	# use distance to ground to shake screen when player falls
+	if Input.is_action_just_released("jump"):
+		var point := ray_cast.get_collision_point()
+		last_dist_ground = global_position.y - point.y
 	
 	# gravity
 	velocity.y += gravity
@@ -29,3 +36,8 @@ func _physics_process(delta: float) -> void:
 		animation_player.play("RESET")
 	
 	move_and_slide()
+
+
+func _on_player_fall_detector_body_entered(body: Node2D) -> void:
+	print(last_dist_ground)
+	camera.shake_down(last_dist_ground / 100)
