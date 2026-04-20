@@ -20,9 +20,9 @@ script = ExtResource("1_6q06x")
 [node name="background" type="Node2D" parent="." unique_id=1362348695]
 
 [node name="Parallax2D" type="Parallax2D" parent="background" unique_id=1654163246]
-repeat_size = Vector2(32, 16)
-autoscroll = Vector2(-200, 0)
-repeat_times = 50
+repeat_size = Vector2(32, 32)
+autoscroll = Vector2(-50, 0)
+repeat_times = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="background/Parallax2D" unique_id=422380796]
 position = Vector2(554, 308)
@@ -61,34 +61,35 @@ shape = SubResource("RectangleShape2D_l3cfh")
 position = Vector2(520, 395)
 
 [node name="ObstacleSpawner" parent="." unique_id=1820575336 node_paths=PackedStringArray("spawn_points") instance=ExtResource("7_hujxm")]
-spawn_points = [NodePath("Spawn"), NodePath("Spawn2"), NodePath("Spawn3"), NodePath("Spawn4"), NodePath("Spawn5"), NodePath("Spawn6"), NodePath("Spawn7"), NodePath("Spawn8"), NodePath("Spawn9")]
-max_spawn_count = 8
+spawn_points = [NodePath("Spawn"), NodePath("Spawn3"), NodePath("Spawn5"), NodePath("Spawn7"), NodePath("Spawn9")]
 
 [node name="Spawn" type="Marker2D" parent="ObstacleSpawner" unique_id=206331364]
 position = Vector2(1176, 64)
 
-[node name="Spawn2" type="Marker2D" parent="ObstacleSpawner" unique_id=1380380926]
-position = Vector2(1176, 128)
-
 [node name="Spawn3" type="Marker2D" parent="ObstacleSpawner" unique_id=2026438957]
 position = Vector2(1176, 192)
-
-[node name="Spawn4" type="Marker2D" parent="ObstacleSpawner" unique_id=819508027]
-position = Vector2(1176, 256)
 
 [node name="Spawn5" type="Marker2D" parent="ObstacleSpawner" unique_id=784572343]
 position = Vector2(1176, 320)
 
-[node name="Spawn6" type="Marker2D" parent="ObstacleSpawner" unique_id=2004071526]
-position = Vector2(1176, 384)
-
 [node name="Spawn7" type="Marker2D" parent="ObstacleSpawner" unique_id=168679408]
 position = Vector2(1176, 448)
-
-[node name="Spawn8" type="Marker2D" parent="ObstacleSpawner" unique_id=31516568]
-position = Vector2(1176, 512)
 
 [node name="Spawn9" type="Marker2D" parent="ObstacleSpawner" unique_id=646821931]
 position = Vector2(1176, 576)
 
+[node name="LevelTimer" type="Timer" parent="." unique_id=42113632]
+wait_time = 10.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=578278079]
+
+[node name="Time" type="Label" parent="CanvasLayer" unique_id=256213838]
+offset_left = 512.0
+offset_top = 624.0
+offset_right = 582.0
+offset_bottom = 647.0
+text = "okokokw"
+
 [connection signal="body_entered" from="PlayerFallDetector" to="Player" method="_on_player_fall_detector_body_entered"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
