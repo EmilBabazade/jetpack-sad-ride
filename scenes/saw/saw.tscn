@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bn1d7ocl0y8vs" path="res://graphics/onstacles/saw3.png" id="2_l8ip7"]
 [ext_resource type="Texture2D" uid="uid://esk5kuji7mci" path="res://graphics/onstacles/saw4.png" id="3_sk0ah"]
 [ext_resource type="PackedScene" uid="uid://q3b6spgmhhm7" path="res://scenes/mover/mover.tscn" id="4_l8ip7"]
+[ext_resource type="PackedScene" uid="uid://d3pl34ce0oql1" path="res://scenes/helper/kill_player_on_collision.tscn" id="6_4qfuj"]
+[ext_resource type="PackedScene" uid="uid://df6fwi1wd7pfd" path="res://scenes/helper/cleanup.tscn" id="7_1cbxr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4qfuj"]
 animations = [{
@@ -48,4 +50,8 @@ to_move = NodePath("..")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=683451979]
 occluder = SubResource("OccluderPolygon2D_sk0ah")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="KillPlayerOnCollision" parent="." unique_id=553609758 node_paths=PackedStringArray("collision_area") instance=ExtResource("6_4qfuj")]
+collision_area = NodePath("..")
+
+[node name="Cleanup" parent="." unique_id=122597989 node_paths=PackedStringArray("to_delete") instance=ExtResource("7_1cbxr")]
+to_delete = NodePath("..")

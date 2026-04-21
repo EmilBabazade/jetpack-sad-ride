@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d3pl34ce0oql1"]
+
+[ext_resource type="Script" uid="uid://cabo7ufafuyy7" path="res://scenes/helper/kill_player_on_collision.gd" id="1_v1gfd"]
+
+[node name="KillPlayerOnCollision" type="Node2D" unique_id=553609758]
+script = ExtResource("1_v1gfd")

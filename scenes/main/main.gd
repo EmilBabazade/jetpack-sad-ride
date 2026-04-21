@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player: Player = $Player
-@onready var time_label: Label = $CanvasLayer/Time
+@onready var time_label: Label = $UI/CanvasLayer/Time
 @onready var level_timer: Timer = $LevelTimer
 @onready var parallax: Parallax2D = $background/Parallax2D
 

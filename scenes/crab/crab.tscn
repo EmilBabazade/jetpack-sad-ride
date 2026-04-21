@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d3ijkvdg3ml0o"]
+
+[ext_resource type="Texture2D" uid="uid://csctjdepr35vv" path="res://graphics/crab/crab1.png" id="1_72p8v"]
+[ext_resource type="Texture2D" uid="uid://bu1heu8a677fp" path="res://graphics/crab/crab2.png" id="2_mma1j"]
+[ext_resource type="Texture2D" uid="uid://dno6wjyanjg1v" path="res://graphics/crab/crab3.png" id="3_e52nb"]
+[ext_resource type="PackedScene" uid="uid://d3pl34ce0oql1" path="res://scenes/helper/kill_player_on_collision.tscn" id="3_wx0ly"]
+[ext_resource type="PackedScene" uid="uid://q3b6spgmhhm7" path="res://scenes/mover/mover.tscn" id="4_0mncq"]
+[ext_resource type="Texture2D" uid="uid://plnygyt84j8" path="res://graphics/crab/crab4.png" id="4_30wt8"]
+[ext_resource type="PackedScene" uid="uid://df6fwi1wd7pfd" path="res://scenes/helper/cleanup.tscn" id="5_0mncq"]
+[ext_resource type="Texture2D" uid="uid://dxue1x7v0uce8" path="res://graphics/crab/crab5.png" id="5_ulf1h"]
+[ext_resource type="Texture2D" uid="uid://dyk0fi5jbgnbg" path="res://graphics/crab/crab6.png" id="6_tr47d"]
+[ext_resource type="Texture2D" uid="uid://c1wodsa184nx0" path="res://graphics/crab/crab7.png" id="7_pbs8c"]
+[ext_resource type="Texture2D" uid="uid://v34xkpjrvyge" path="res://graphics/crab/crab8.png" id="8_0pfnp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wx0ly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_72p8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mma1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e52nb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_30wt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ulf1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tr47d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pbs8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0pfnp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72p8v"]
+size = Vector2(56, 22)
+
+[node name="Crab" type="Area2D" unique_id=494953296]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1883512411]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wx0ly")
+animation = &"walk"
+autoplay = "walk"
+frame = 7
+frame_progress = 0.8641584
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645761418]
+position = Vector2(-2, 2)
+shape = SubResource("RectangleShape2D_72p8v")
+
+[node name="KillPlayerOnCollision" parent="." unique_id=553609758 node_paths=PackedStringArray("collision_area") instance=ExtResource("3_wx0ly")]
+collision_area = NodePath("..")
+
+[node name="Mover" parent="." unique_id=1221921096 node_paths=PackedStringArray("to_move") instance=ExtResource("4_0mncq")]
+to_move = NodePath("..")
+variation = 0.5
+
+[node name="Cleanup" parent="." unique_id=122597989 node_paths=PackedStringArray("to_delete") instance=ExtResource("5_0mncq")]
+to_delete = NodePath("..")

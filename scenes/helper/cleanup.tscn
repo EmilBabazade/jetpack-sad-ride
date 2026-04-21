@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://df6fwi1wd7pfd"]
+
+[ext_resource type="Script" uid="uid://bwjpp8imnl4uy" path="res://scenes/helper/cleanup.gd" id="1_a7l4c"]
+
+[node name="Cleanup" type="Node2D" unique_id=122597989]
+script = ExtResource("1_a7l4c")
+
+[node name="Timer" type="Timer" parent="." unique_id=1371728620]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
