@@ -13,7 +13,13 @@ var last_dist_ground := 0.0
 
 @onready var enemy_detector: RayCast2D = $EnemyDetector
 
+@onready var gt: GetHit = $GetHit
+var died := false
+
 func _physics_process(delta: float) -> void:
+	if died:
+		return
+	
 	# jump
 	var is_jumping := Input.is_action_pressed("jump")
 	if is_jumping:
@@ -49,3 +55,9 @@ func _physics_process(delta: float) -> void:
 func _on_player_fall_detector_body_entered(body: Node2D) -> void:
 	print(last_dist_ground)
 	camera.shake_down(last_dist_ground / 100)
+
+func die() -> void:
+	died = true
+	get_tree().paused = true
+	await gt.get_hit(2.0)
+	get_tree().paused = false

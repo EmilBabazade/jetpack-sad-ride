@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	time_label.text = str(level_timer.time_left)
 
 func on_death() -> void:
-	player.queue_free.call_deferred()
+	await player.die()
 
 func _on_level_timer_timeout() -> void:
 	LevelManager.next_level()

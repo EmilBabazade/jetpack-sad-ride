@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://d2suiv7jiotju" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://brtom3jmlti4x" path="res://graphics/player/player2-Sheet.png" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bbiw7b40haqk4" path="res://graphics/particles/bullet.png" id="3_gmlin"]
+[ext_resource type="Shader" uid="uid://b1cvqw0vxldhf" path="res://scenes/crab/crab.gdshader" id="3_p47bc"]
 [ext_resource type="Texture2D" uid="uid://c8bhcrmvfc8ew" path="res://graphics/particles/spark.png" id="5_p47bc"]
+[ext_resource type="PackedScene" uid="uid://c41ujmiqm7fjl" path="res://scenes/helper/get_hit.tscn" id="6_75vfm"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dovo2"]
 particle_flag_disable_z = true
@@ -22,6 +24,13 @@ scale_max = 2.0
 collision_mode = 2
 sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75vfm"]
+shader = ExtResource("3_p47bc")
+shader_parameter/start_frame = 0
+shader_parameter/current_frame = 0
+shader_parameter/mix_ratio = 1.0
+shader_parameter/on = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
 size = Vector2(24, 40)
@@ -93,6 +102,7 @@ visibility_rect = Rect2(-100, -100, 200, 650)
 process_material = SubResource("ParticleProcessMaterial_dovo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1570348243]
+material = SubResource("ShaderMaterial_75vfm")
 position = Vector2(0, -4)
 scale = Vector2(2, 2)
 texture = ExtResource("2_gmlin")
@@ -121,3 +131,8 @@ target_position = Vector2(0.033333335, 721)
 collision_mask = 8
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="GetHit" parent="." unique_id=1000656349 node_paths=PackedStringArray("sprite", "to_delete") instance=ExtResource("6_75vfm")]
+process_mode = 3
+sprite = NodePath("../Sprite2D")
+to_delete = NodePath("..")
