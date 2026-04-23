@@ -18,4 +18,4 @@ func on_death() -> void:
 
 func _on_level_timer_timeout() -> void:
 	LevelManager.next_level()
-	parallax.autoscroll.x += parallax.autoscroll.x * 0.1
+	#parallax.autoscroll.x += parallax.autoscroll.x * 0.1

@@ -11,6 +11,8 @@ var jump := 300.0
 @onready var ray_cast: RayCast2D = $GroundDetector
 var last_dist_ground := 0.0
 
+@onready var enemy_detector: RayCast2D = $EnemyDetector
+
 func _physics_process(delta: float) -> void:
 	# jump
 	var is_jumping := Input.is_action_pressed("jump")
@@ -36,6 +38,11 @@ func _physics_process(delta: float) -> void:
 		animation_player.play("RESET")
 	
 	move_and_slide()
+	
+	# shoot enemy
+	if Input.is_action_pressed("jump") and enemy_detector.is_colliding():
+		var crab: Crab = enemy_detector.get_collider()
+		await crab.get_hit()
 
 
 func _on_player_fall_detector_body_entered(body: Node2D) -> void:

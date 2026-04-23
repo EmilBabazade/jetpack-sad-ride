@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ijkvdg3ml0o" path="res://scenes/crab/crab.tscn" id="8_yyfjg"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l3cfh"]
-polygon = PackedVector2Array(-146, 6, 177, 7, 176, -24, -146, -25)
+polygon = PackedVector2Array(-146, 6, 177, 7, 173, -27, -146, -25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3cfh"]
 size = Vector2(254, 6)
@@ -37,7 +37,7 @@ camera = NodePath("../Camera2D")
 [node name="ground" type="Node2D" parent="." unique_id=2076832451]
 
 [node name="Ground" parent="ground" unique_id=1460966692 instance=ExtResource("2_iuonh")]
-position = Vector2(552, 712)
+position = Vector2(554, 707)
 scale = Vector2(49.72, 5.0400014)
 collision_layer = 4
 
@@ -51,7 +51,7 @@ position = Vector2(576, 326)
 script = ExtResource("4_l3cfh")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=106572156]
-position = Vector2(216, 656)
+position = Vector2(226, 649)
 occluder = SubResource("OccluderPolygon2D_l3cfh")
 
 [node name="PlayerFallDetector" type="Area2D" parent="." unique_id=2029747448]
@@ -59,7 +59,6 @@ position = Vector2(225, 628)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFallDetector" unique_id=1818089728]
-position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_l3cfh")
 
 [node name="Spawners" type="Node2D" parent="." unique_id=250159777]
@@ -88,7 +87,7 @@ obstacle_scenes = Array[PackedScene]([ExtResource("8_yyfjg")])
 spawn = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="Spawners/RandomSpawner" unique_id=1307189140]
-position = Vector2(1176, 608)
+position = Vector2(1176, 604)
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=42113632]
 wait_time = 10.0
@@ -106,7 +105,7 @@ offset_bottom = 647.0
 text = "okokokw"
 
 [node name="Crab" parent="." unique_id=494953296 instance=ExtResource("8_yyfjg")]
-position = Vector2(664, 608)
+position = Vector2(632, 592)
 
 [connection signal="body_entered" from="PlayerFallDetector" to="Player" method="_on_player_fall_detector_body_entered"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
