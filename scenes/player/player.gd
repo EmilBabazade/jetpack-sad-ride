@@ -41,8 +41,9 @@ func _physics_process(delta: float) -> void:
 	
 	# shoot enemy
 	if Input.is_action_pressed("jump") and enemy_detector.is_colliding():
-		var crab: Crab = enemy_detector.get_collider()
-		await crab.get_hit()
+		var crab: Node2D = enemy_detector.get_collider()
+		var gt: GetHit = crab.get_node("GetHit")
+		await gt.get_hit()
 
 
 func _on_player_fall_detector_body_entered(body: Node2D) -> void:

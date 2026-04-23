@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c41ujmiqm7fjl"]
+
+[ext_resource type="Script" uid="uid://dfgtgpeqnnqfj" path="res://scenes/helper/get_hit.gd" id="1_s201c"]
+
+[node name="GetHit" type="Node2D" unique_id=1000656349]
+script = ExtResource("1_s201c")

@@ -13,10 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://dyk0fi5jbgnbg" path="res://graphics/crab/crab6.png" id="6_tr47d"]
 [ext_resource type="Texture2D" uid="uid://c1wodsa184nx0" path="res://graphics/crab/crab7.png" id="7_pbs8c"]
 [ext_resource type="Texture2D" uid="uid://v34xkpjrvyge" path="res://graphics/crab/crab8.png" id="8_0pfnp"]
+[ext_resource type="PackedScene" uid="uid://c41ujmiqm7fjl" path="res://scenes/helper/get_hit.tscn" id="14_tr47d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulf1h"]
 resource_local_to_scene = true
 shader = ExtResource("1_30wt8")
+shader_parameter/start_frame = 0
+shader_parameter/current_frame = 0
+shader_parameter/mix_ratio = 1.0
+shader_parameter/on = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wx0ly"]
 animations = [{
@@ -85,3 +90,7 @@ to_delete = NodePath("..")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=205769224]
 occluder = SubResource("OccluderPolygon2D_e52nb")
+
+[node name="GetHit" parent="." unique_id=1000656349 node_paths=PackedStringArray("sprite", "to_delete") instance=ExtResource("14_tr47d")]
+sprite = NodePath("../AnimatedSprite2D")
+to_delete = NodePath("..")

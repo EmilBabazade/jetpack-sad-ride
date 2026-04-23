@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dd58jjoo65npk"]
+
+[ext_resource type="Texture2D" uid="uid://cuynymov7dtkg" path="res://graphics/car/car1.png" id="1_rytg7"]
+[ext_resource type="Shader" uid="uid://b1cvqw0vxldhf" path="res://scenes/crab/crab.gdshader" id="1_s371w"]
+[ext_resource type="Texture2D" uid="uid://b1pdwfy26m23d" path="res://graphics/car/car2.png" id="2_x7uf8"]
+[ext_resource type="Texture2D" uid="uid://bqs6yojsw4pw7" path="res://graphics/car/car3.png" id="3_tcn38"]
+[ext_resource type="PackedScene" uid="uid://d3pl34ce0oql1" path="res://scenes/helper/kill_player_on_collision.tscn" id="4_x7uf8"]
+[ext_resource type="PackedScene" uid="uid://q3b6spgmhhm7" path="res://scenes/mover/mover.tscn" id="5_tcn38"]
+[ext_resource type="PackedScene" uid="uid://df6fwi1wd7pfd" path="res://scenes/helper/cleanup.tscn" id="6_b3ski"]
+[ext_resource type="PackedScene" uid="uid://c41ujmiqm7fjl" path="res://scenes/helper/get_hit.tscn" id="7_u0012"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xs4xl"]
+resource_local_to_scene = true
+shader = ExtResource("1_s371w")
+shader_parameter/start_frame = 0
+shader_parameter/current_frame = 0
+shader_parameter/mix_ratio = 1.0
+shader_parameter/on = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3ski"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rytg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x7uf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tcn38")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rytg7"]
+size = Vector2(41, 21)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rytg7"]
+polygon = PackedVector2Array(-25, -3, -17, -3, -13, -13, 12, -13, 17, -7, 17, 11, -25, 11)
+
+[node name="Car" type="Area2D" unique_id=1147225513]
+collision_layer = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1311417149]
+material = SubResource("ShaderMaterial_xs4xl")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_b3ski")
+autoplay = "default"
+frame = 1
+frame_progress = 0.6559756
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=234461341]
+position = Vector2(-4.5, 1.5)
+shape = SubResource("RectangleShape2D_rytg7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1149784035]
+position = Vector2(-1, 1)
+occluder = SubResource("OccluderPolygon2D_rytg7")
+
+[node name="KillPlayerOnCollision" parent="." unique_id=553609758 node_paths=PackedStringArray("collision_area") instance=ExtResource("4_x7uf8")]
+collision_area = NodePath("..")
+
+[node name="Mover" parent="." unique_id=1221921096 node_paths=PackedStringArray("to_move") instance=ExtResource("5_tcn38")]
+to_move = NodePath("..")
+variation = 1.5
+
+[node name="Cleanup" parent="." unique_id=122597989 node_paths=PackedStringArray("to_delete") instance=ExtResource("6_b3ski")]
+to_delete = NodePath("..")
+
+[node name="GetHit" parent="." unique_id=1000656349 node_paths=PackedStringArray("sprite", "to_delete") instance=ExtResource("7_u0012")]
+sprite = NodePath("../AnimatedSprite2D")
+to_delete = NodePath("..")

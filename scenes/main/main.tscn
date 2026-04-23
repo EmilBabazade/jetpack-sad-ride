@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2biy3u6a14wu" path="res://scenes/obstacle_spawner/obstacle_spawner.tscn" id="7_hujxm"]
 [ext_resource type="PackedScene" uid="uid://cqu1pcd5h5vhj" path="res://scenes/random_spawner/random_spawner.tscn" id="8_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://d3ijkvdg3ml0o" path="res://scenes/crab/crab.tscn" id="8_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://dd58jjoo65npk" path="res://scenes/car/car.tscn" id="10_a8run"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l3cfh"]
 polygon = PackedVector2Array(-146, 6, 177, 7, 176, -24, -146, -25)
@@ -84,7 +85,7 @@ position = Vector2(1176, 448)
 position = Vector2(1176, 576)
 
 [node name="RandomSpawner" parent="Spawners" unique_id=1127463429 node_paths=PackedStringArray("spawn") instance=ExtResource("8_b1x3f")]
-obstacle_scenes = Array[PackedScene]([ExtResource("8_yyfjg")])
+obstacle_scenes = Array[PackedScene]([ExtResource("8_yyfjg"), ExtResource("10_a8run")])
 spawn = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="Spawners/RandomSpawner" unique_id=1307189140]
