@@ -16,6 +16,12 @@ var last_dist_ground := 0.0
 @onready var gt: GetHit = $GetHit
 var died := false
 
+@onready var bullet_audio: AudioStreamPlayer2D = $BulletAudio
+@onready var fall_audio: AudioStreamPlayer2D = $FallAudio
+
+func _ready() -> void:
+	LevelManager.level_up.connect(on_level_up)
+
 func _physics_process(delta: float) -> void:
 	if died:
 		return
@@ -28,6 +34,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		jump = init_jump
 	bullet_particles.emitting = is_jumping
+	if is_jumping:
+		bullet_audio.play()
 	
 	# use distance to ground to shake screen when player falls
 	if Input.is_action_just_released("jump"):
@@ -54,6 +62,17 @@ func _physics_process(delta: float) -> void:
 
 func _on_player_fall_detector_body_entered(body: Node2D) -> void:
 	print(last_dist_ground)
+	if last_dist_ground < -520:
+		fall_audio.volume_db = 0.0
+		fall_audio.pitch_scale = 0.85
+	elif last_dist_ground < - 240:
+		fall_audio.volume_db = -4.0
+		fall_audio.pitch_scale = 0.98
+	else:
+		fall_audio.volume_db = -8.0
+		fall_audio.pitch_scale = 1.1
+	fall_audio.play()
+	
 	camera.shake_down(last_dist_ground / 100)
 
 func die() -> void:
@@ -61,3 +80,6 @@ func die() -> void:
 	get_tree().paused = true
 	await gt.get_hit(2.0)
 	get_tree().paused = false
+
+func on_level_up(_level: int) -> void:
+	gravity += gravity * 0.05

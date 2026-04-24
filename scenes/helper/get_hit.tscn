@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c41ujmiqm7fjl"]
 
 [ext_resource type="Script" uid="uid://dfgtgpeqnnqfj" path="res://scenes/helper/get_hit.gd" id="1_s201c"]
+[ext_resource type="AudioStream" uid="uid://df7nu8qyaf0p1" path="res://audio/391665__jeckkech__lifebar_short.wav" id="2_inbwh"]
 
 [node name="GetHit" type="Node2D" unique_id=1000656349]
 script = ExtResource("1_s201c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=573987581]
+stream = ExtResource("2_inbwh")
